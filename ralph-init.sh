@@ -46,7 +46,12 @@ cat > .qwen/config.json << 'EOF'
   "model": "qwen-max",
   "temperature": 0.2,
   "max_tokens": 4000,
-  "context_window": 32000
+  "context_window": 32000,
+  "tools": {
+    "sandbox": false,
+    "allowed": ["write_file", "edit", "read_file", "web_fetch", "todo_write", "task", "glob", "run_shell_command"]
+  },
+  "approvalMode": "yolo"
 }
 EOF
 

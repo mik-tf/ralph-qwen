@@ -36,11 +36,12 @@ echo "Starting at: $(date)"
 echo "------------------------"
 
 # Main loop
+cd "$(dirname "$0")" || exit 1
 while true; do
     echo "$(date): Starting iteration" >> $LOG_FILE
     
-    # Run Qwen with the current prompt
-    if cat $PROMPT_FILE | qwen 2>>$ERROR_LOG >> $LOG_FILE; then
+    # Run Qwen with the current prompt - allow all tools (yolo mode) with proper configuration
+    if cat $PROMPT_FILE | qwen --approval-mode yolo --sandbox false 2>>$ERROR_LOG >> $LOG_FILE; then
         # On success, commit changes
         git add .
         if git diff --cached --quiet; then

@@ -61,6 +61,7 @@ echo "------------------------"
 update_iteration
 
 # Main loop with iteration limits
+cd "$(dirname "$0")" || exit 1
 iteration_count=0
 while true; do
     iteration_count=$((iteration_count + 1))
@@ -85,9 +86,9 @@ while true; do
     STATUS_MSG="Iteration $iteration_count - Running: $(date)"
     sed -i "s/Last Action:.*/Last Action: $STATUS_MSG/" $TODO_FILE
     
-    # Run Qwen with the current prompt
+    # Run Qwen with the current prompt - allow all tools (yolo mode) with proper configuration
     QWEN_START_TIME=$(date)
-    if cat $PROMPT_FILE | qwen 2>>$ERROR_LOG >> $LOG_FILE; then
+    if cat $PROMPT_FILE | qwen --approval-mode yolo --sandbox false 2>>$ERROR_LOG >> $LOG_FILE; then
         # On success, commit changes
         git add .
         if git diff --cached --quiet; then

@@ -183,11 +183,30 @@ For a comprehensive collection of prompt templates for different use cases (Reac
 
 The repository includes several scripts to automate the Ralph technique:
 
-- `ralph-loop.sh`: Basic infinite loop script
+- `ralph-loop.sh`: Basic infinite loop script with proper tool configuration
 - `ralph-loop-advanced.sh`: Advanced loop with monitoring and control features
 - `ralph-init.sh`: Project initialization script
+- `test-setup.sh`: Script to verify proper tool configuration
 
 For detailed documentation about these scripts and how to use them, see the scripts themselves or [INSTALLATION.md](INSTALLATION.md).
+
+## File System Tool Configuration
+
+**Important**: To ensure the Ralph technique works correctly with file system operations, the Qwen CLI must be configured properly. See [RALPH_SETUP.md](RALPH_SETUP.md) for detailed instructions on setting up tool access.
+
+### Quick Configuration
+
+When running Qwen through the Ralph scripts, always use these flags:
+
+```bash
+qwen --approval-mode yolo --sandbox false
+```
+
+This enables the necessary file system tools:
+- `write_file`: Create/write files
+- `edit`: Modify existing files
+- `read_file`: Read file contents
+- And other essential tools for the Ralph technique
 
 ## Examples
 

@@ -17,9 +17,10 @@ This repository provides a complete implementation of the "Ralph" coding techniq
 - `TROUBLESHOOTING_BEST_PRACTICES.md`: Comprehensive troubleshooting and best practices
 
 ### 3. Scripts
-- `ralph-loop.sh`: Basic Ralph loop implementation
-- `ralph-loop-advanced.sh`: Advanced loop with monitoring features
+- `ralph-loop.sh`: Basic Ralph loop implementation with proper tool configuration
+- `ralph-loop-advanced.sh`: Advanced loop with monitoring features and proper tool configuration
 - `ralph-init.sh`: Project initialization script
+- `test-setup.sh`: Script to verify proper tool configuration
 
 ### 4. Examples Directory
 - `examples/README.md`: Overview of examples
@@ -42,6 +43,7 @@ The Ralph technique works best with:
 - Proper Git workflow and version control
 - Regular monitoring and intervention when needed
 - Understanding that the agent will make mistakes that require human correction
+- **Proper file system tool configuration** (essential for file operations)
 
 ## Use Cases
 
@@ -59,5 +61,6 @@ The Ralph technique works best with:
 - Plan for imperfection - the technique is "deterministically bad in an undeterministic world"
 - Set up proper monitoring and logging
 - Have backup strategies for long-running processes
+- **Ensure proper tool configuration for file system access** (critical for success)
 
 For complete details, refer to the individual documentation files in this repository.
