@@ -21,7 +21,7 @@
     - [Monitoring and Control](#monitoring-and-control)
   - [Qwen-Specific Implementation](#qwen-specific-implementation)
   - [Prompt Templates](#prompt-templates)
-  - [Scripts and Automation](#scripts-and-automation)
+  - [Repository Structure](#repository-structure)
   - [Examples](#examples)
   - [Troubleshooting and Best Practices](#troubleshooting-and-best-practices)
   - [Troubleshooting](#troubleshooting)
@@ -264,4 +264,4 @@ We welcome contributions to the Qwen-Ralph project! Feel free to submit issues, 
 
 ## License
 
-Apache License 2.0, Copyright 2025 ThreeFold - see the LICENSE file for details.
+Apache License 2.0, Copyright 2025 ThreeFold - see the [license](LICENSE) file for details.
