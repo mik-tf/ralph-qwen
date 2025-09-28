@@ -27,7 +27,7 @@ help:
 .PHONY: create-project
 create-project:
 	@echo "Creating new Ralph project..."
-	@$(SCRIPTS_DIR)/create-project.sh
+	$(SCRIPTS_DIR)/create-project.sh
 
 # List all projects in the workspace
 .PHONY: list-projects

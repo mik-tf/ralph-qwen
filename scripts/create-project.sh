@@ -1,136 +1,183 @@
 #!/bin/bash
-# create-project.sh - Interactive project creation script
-# Part of the enhanced Ralph-Qwen workflow
+# Ralph Project Initializer
+# Sets up a new project for using the Ralph technique with Qwen
 
 set -e
 
-echo \"🚀 Ralph-Qwen Project Creator\"
-echo \"==============================\"
-echo \"\"
-
-# Get project name
-read -p \"Enter project name: \" PROJECT_NAME
-if [ -z \"$PROJECT_NAME\" ]; then
-    echo \"❌ Error: Project name is required\"
+# Check if qwen is installed
+if ! command -v qwen &> /dev/null; then
+    echo "Qwen CLI is not installed. Please install it first:"
+    echo "  npm install -g @qwen-code/qwen-code@latest"
     exit 1
 fi
 
-# Check if project already exists
-if [ -d \"../$PROJECT_NAME\" ]; then
-    echo \"❌ Error: Project '$PROJECT_NAME' already exists\"
+# Get project name interactively
+echo "🚀 Ralph-Qwen Project Creator"
+echo "=============================="
+echo ""
+read -p "Enter project name: " PROJECT_NAME
+echo ""
+
+if [ -z "$PROJECT_NAME" ]; then
+    echo "❌ Error: Project name is required"
     exit 1
 fi
 
-echo \"\"
-echo \"📋 Available project templates:\"
-echo \"1) Generic Project\"
-echo \"2) React to Vue Conversion\"
-echo \"3) Python to TypeScript Conversion\"
-echo \"4) API Implementation\"
-echo \"5) Codebase Maintenance\"
-echo \"\"
+# Check if project already exists in workspace
+if [ -d "../$PROJECT_NAME" ]; then
+    echo "❌ Error: Project '$PROJECT_NAME' already exists in workspace"
+    exit 1
+fi
 
-read -p \"Select template (1-5) [1]: \" TEMPLATE_CHOICE
-TEMPLATE_CHOICE=${TEMPLATE_CHOICE:-1}
-
-# Create project directory
-echo \"🔧 Creating project directory...\"
-mkdir -p \"../$PROJECT_NAME\"
-cd \"../$PROJECT_NAME\"
+# Create project directory in parent directory
+echo "🔧 Creating project directory..."
+mkdir -p "../$PROJECT_NAME"
+cd "../$PROJECT_NAME"
 
 # Initialize git repo
-echo \"🔧 Initializing git repository...\"
+echo "🔧 Initializing git repository..."
 git init
 git checkout -b main
 
-# Create standard project structure
-echo \"🔧 Creating project structure...\"
+# Create basic directory structure
+echo "🔧 Creating project structure..."
 mkdir -p src target .agent docs .qwen
 
-# Create basic files based on template
-case $TEMPLATE_CHOICE in
+# Ask for project type
+echo "📋 What type of project are you working on?"
+echo "1) Codebase Porting (e.g., React to Vue)"
+echo "2) Translation Services"
+echo "3) Editing & Proofreading"
+echo "4) Copywriting"
+echo "5) Website Creation"
+echo "6) Other"
+echo ""
+read -p "Select project type (1-6) [1]: " PROJECT_TYPE
+PROJECT_TYPE=${PROJECT_TYPE:-1}
+
+# Create appropriate prompt based on project type
+case $PROJECT_TYPE in
     1)
-        # Generic project
+        # Codebase Porting
+        cat > prompt.md << 'EOF'
+Your job is to port my-[SOURCE]-project to my-[TARGET]-project ([SOURCE] to [TARGET]) and maintain the repository.
+
+You have access to the current my-[SOURCE]-project repository as well as the my-[TARGET]-project repository.
+
+Make a commit and push your changes after every single file edit.
+
+Use the my-[TARGET]-project/.agent/ directory as a scratchpad for your work. Store long term plans and todo lists there.
+
+Follow existing code patterns and conventions.
+
+CURRENT STATUS: Starting the project
+
+Please ask me for more details about the specific project requirements, source code location, and target requirements.
+EOF
+        ;;
+    2)
+        # Translation Services
+        cat > prompt.md << 'EOF'
+Your job is to provide professional translation services for documents, websites, and multimedia content.
+
+You have access to the source documents and need to translate them accurately while maintaining cultural appropriateness.
+
+Make a commit and push your changes after every single file edit.
+
+Use the .agent/ directory as a scratchpad for your work. Store long term plans and todo lists there.
+
+Follow existing translation patterns and conventions.
+
+CURRENT STATUS: Starting translation project
+
+Please ask me for more details about the specific documents, languages, and requirements.
+EOF
+        ;;
+    3)
+        # Editing & Proofreading
+        cat > prompt.md << 'EOF'
+Your job is to provide expert proofreading and editing services to ensure content is polished, accurate, and meets the highest quality standards.
+
+You have access to the source documents and need to review them for grammar, style, consistency, and clarity.
+
+Make a commit and push your changes after every single file edit.
+
+Use the .agent/ directory as a scratchpad for your work. Store long term plans and todo lists there.
+
+Follow existing editing patterns and conventions.
+
+CURRENT STATUS: Starting editing project
+
+Please ask me for more details about the specific documents and requirements.
+EOF
+        ;;
+    4)
+        # Copywriting
+        cat > prompt.md << 'EOF'
+Your job is to create creative and compelling copy that engages your audience and drives action across all marketing channels.
+
+You have access to the project requirements and need to craft copy that resonates with local audiences while maintaining your brand's voice and identity.
+
+Make a commit and push your changes after every single file edit.
+
+Use the .agent/ directory as a scratchpad for your work. Store long term plans and todo lists there.
+
+Follow existing copywriting patterns and conventions.
+
+CURRENT STATUS: Starting copywriting project
+
+Please ask me for more details about the specific requirements and target audience.
+EOF
+        ;;
+    5)
+        # Website Creation
+        cat > prompt.md << 'EOF'
+Your job is to create custom websites designed to showcase your brand and optimized for user experience and search engines.
+
+You have access to the project requirements and need to build responsive, accessible, and conversion-focused websites.
+
+Make a commit and push your changes after every single file edit.
+
+Use the .agent/ directory as a scratchpad for your work. Store long term plans and todo lists there.
+
+Follow existing web development patterns and conventions.
+
+CURRENT STATUS: Starting website creation project
+
+Please ask me for more details about the specific requirements and design preferences.
+EOF
+        ;;
+    *)
+        # Other
         cat > prompt.md << 'EOF'
 Your job is to work on this codebase and maintain the repository.
-
-Current status: Starting the project
 
 Make a commit and push your changes after every single file edit.
 
 Use the .agent/ directory as a scratchpad for your work. Store long term plans and todo lists there.
 
 Follow existing code patterns and conventions.
-EOF
-        ;;
-    2)
-        # React to Vue conversion
-        cat > prompt.md << 'EOF'
-Your job is to convert this React codebase to Vue 3 Composition API.
 
-Current status: Starting React to Vue conversion
+CURRENT STATUS: Starting the project
 
-Make a commit and push your changes after every single file edit.
-
-Convert each React component to a Vue SFC with Composition API.
-Maintain the same functionality and UI.
-Use the .agent/ directory as a scratchpad for your work.
-EOF
-        ;;
-    3)
-        # Python to TypeScript conversion
-        cat > prompt.md << 'EOF'
-Your job is to convert this Python codebase to TypeScript.
-
-Current status: Starting Python to TypeScript conversion
-
-Make a commit and push your changes after every single file edit.
-
-Convert each Python module to a TypeScript module.
-Maintain the same functionality and API.
-Use the .agent/ directory as a scratchpad for your work.
-EOF
-        ;;
-    4)
-        # API Implementation
-        cat > prompt.md << 'EOF'
-Your job is to implement an API based on the specifications.
-
-Current status: Starting API implementation
-
-Make a commit and push your changes after every single file edit.
-
-Implement the API endpoints according to the specifications.
-Use the .agent/ directory as a scratchpad for your work.
-EOF
-        ;;
-    5)
-        # Codebase Maintenance
-        cat > prompt.md << 'EOF'
-Your job is to maintain and improve this codebase.
-
-Current status: Starting codebase maintenance
-
-Make a commit and push your changes after every single file edit.
-
-Identify areas for improvement, fix bugs, and enhance functionality.
-Use the .agent/ directory as a scratchpad for your work.
+Please ask me for more details about the specific project requirements.
 EOF
         ;;
 esac
 
-# Create .qwen config
+# Create default Qwen configuration
+mkdir -p .qwen
 cat > .qwen/config.json << 'EOF'
 {
-  \"model\": \"qwen-max\",
-  \"temperature\": 0.2,
-  \"max_tokens\": 4000,
-  \"context_window\": 32000,
-  \"tools\": {
-    \"sandbox\": false,
-    \"allowed\": [\"write_file\", \"edit\", \"read_file\", \"web_fetch\", \"todo_write\", \"task\", \"glob\", \"run_shell_command\"]
+  "model": "qwen-max",
+  "temperature": 0.2,
+  "max_tokens": 4000,
+  "context_window": 32000,
+  "tools": {
+    "sandbox": false,
+    "allowed": ["write_file", "edit", "read_file", "web_fetch", "todo_write", "task", "glob", "run_shell_command"]
   },
-  \"approvalMode\": \"yolo\"
+  "approvalMode": "yolo"
 }
 EOF
 
@@ -149,7 +196,8 @@ TODO_BACKUP/
 .cache/
 EOF
 
-# Create TODO tracking
+# Create initial TODO file
+mkdir -p .agent
 cat > .agent/TODO.md << 'EOF'
 # Ralph TODO List
 
@@ -192,15 +240,16 @@ Update this section with progress.
 See \`.agent/TODO.md\` for the agent's tracking file.
 EOF
 
-echo \"🔧 Initializing git repository...\"
+# Initialize git repository
+echo "🔧 Initializing git repository..."
 git add .
-git commit -m \"Initial commit: Project '$PROJECT_NAME' created with Ralph-Qwen\"
+git commit -m "Initial commit: Project '$PROJECT_NAME' created with Ralph-Qwen"
 
-echo \"\"
-echo \"✅ Project '$PROJECT_NAME' created successfully!\"
-echo \"\"
-echo \"Next steps:\"
-echo \"1. cd ../$PROJECT_NAME\"
-echo \"2. Update prompt.md with your specific instructions\" 
-echo \"3. Run: make run-project PROJECT_NAME=$PROJECT_NAME\"
-echo \"\"
+echo ""
+echo "✅ Project '$PROJECT_NAME' created successfully!"
+echo ""
+echo "Next steps:"
+echo "1. cd ../$PROJECT_NAME"
+echo "2. Update prompt.md with your specific instructions" 
+echo "3. Run: make run-project PROJECT_NAME=$PROJECT_NAME"
+echo ""
