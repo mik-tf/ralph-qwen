@@ -55,55 +55,46 @@ Qwen is an excellent choice for the Ralph technique because:
 - Good performance on refactoring and porting tasks
 - Access to multiple models with different capabilities
 
-For detailed information about the Qwen-specific implementation, see [QWEN_IMPLEMENTATION.md](QWEN_IMPLEMENTATION.md).
+For detailed information about the Qwen-specific implementation, see [docs/QWEN_IMPLEMENTATION.md](docs/QWEN_IMPLEMENTATION.md).
 
 ## Installation
 
-For detailed installation instructions, see [INSTALLATION.md](INSTALLATION.md).
+For detailed installation instructions, see [docs/INSTALLATION.md](docs/INSTALLATION.md).
 
-### Prerequisites
-- Node.js (v18 or higher)
-- npm or yarn
-- Git for version control
-- A Qwen API key (if using hosted version)
-
-### Install Qwen CLI
-
-```bash
-# Install Qwen globally
-npm install -g @qwen-code/qwen-code@latest
-
-# Verify installation
-qwen --version
-
-# Log in to your account (if required)
-qwen login
-```
-
-### Install Qwen-Ralph
+The easiest way to get started is to use the Makefile interface:
 
 ```bash
 # Clone the repository
-git clone https://github.com/mik-tf/qwen-ralph.git
-cd qwen-ralph
+git clone https://github.com/mik-tf/ralph-qwen.git
+cd ralph-qwen
 
-# Make scripts executable
-chmod +x ralph-*.sh
+# See available commands
+make help
 
-# Initialize a new project
-./ralph-init.sh my-project
+# Create your first project
+make create-project
 ```
 
 ## Quick Start
 
-1. **Create a project directory**:
+1. **Enhanced Workflow** (Recommended):
    ```bash
-   mkdir my-ralph-project
-   cd my-ralph-project
+   # Use the Makefile for easy automation
+   make help
+   make create-project
+   # Follow the interactive prompts to create your project
+   
+   # Start the Ralph loop for your project
+   make run-project PROJECT_NAME=my-awesome-project
    ```
 
-2. **Initialize your source and target repositories**:
+2. **Traditional Approach**:
    ```bash
+   # Create a project directory
+   mkdir my-ralph-project
+   cd my-ralph-project
+   
+   # Initialize your source and target repositories
    # For porting, create your source repository first
    # Then create the target directory
    mkdir target-repo
@@ -124,8 +115,13 @@ chmod +x ralph-*.sh
 
 4. **Run the Ralph loop**:
    ```bash
-   # Use the provided script (created later in this guide)
-   ./ralph-loop.sh
+   # Use the enhanced workflow (recommended)
+   make create-project
+   # Follow the interactive prompts
+   
+   # OR use the traditional approach:
+   # From the ralph-qwen directory
+   ./scripts/ralph-loop.sh
    ```
 
 ## Use Cases
@@ -151,7 +147,7 @@ The Ralph technique is particularly effective for:
 - Applying fixes to multiple similar code sections
 - Refactoring patterns that cause known issues
 
-For detailed prompt templates for these use cases, see [PROMPT_TEMPLATES.md](PROMPT_TEMPLATES.md).
+For detailed prompt templates for these use cases, see [docs/PROMPT_TEMPLATES.md](docs/PROMPT_TEMPLATES.md).
 
 ## Advanced Usage
 
@@ -173,11 +169,11 @@ For long-running processes, consider:
 
 ## Qwen-Specific Implementation
 
-For detailed information about how Qwen works with the Ralph technique, configuration, and best practices specific to Qwen, see [QWEN_IMPLEMENTATION.md](QWEN_IMPLEMENTATION.md).
+For detailed information about how Qwen works with the Ralph technique, configuration, and best practices specific to Qwen, see [docs/QWEN_IMPLEMENTATION.md](docs/QWEN_IMPLEMENTATION.md).
 
 ## Prompt Templates
 
-For a comprehensive collection of prompt templates for different use cases (React to Vue, Python to TypeScript, API implementation, etc.), see [PROMPT_TEMPLATES.md](PROMPT_TEMPLATES.md).
+For a comprehensive collection of prompt templates for different use cases (React to Vue, Python to TypeScript, API implementation, etc.), see [docs/PROMPT_TEMPLATES.md](docs/PROMPT_TEMPLATES.md).
 
 ## Repository Structure
 
@@ -201,11 +197,12 @@ ralph-qwen/
 │   └── ...
 ├── examples/             # Example projects
 ├── templates/            # Project templates
+├── templates/            # Project templates
 └── .gitignore            # Git ignore rules
 
 ## File System Tool Configuration
 
-**Important**: To ensure the Ralph technique works correctly with file system operations, the Qwen CLI must be configured properly. See [RALPH_SETUP.md](RALPH_SETUP.md) for detailed instructions on setting up tool access.
+**Important**: To ensure the Ralph technique works correctly with file system operations, the Qwen CLI must be configured properly. See [docs/RALPH_SETUP.md](docs/RALPH_SETUP.md) for detailed instructions on setting up tool access.
 
 ### Quick Configuration
 
@@ -233,11 +230,11 @@ See [examples/README.md](examples/README.md) for more details on using the examp
 
 ## Troubleshooting and Best Practices
 
-For comprehensive troubleshooting guidance and best practices when using the Ralph technique, see [TROUBLESHOOTING_BEST_PRACTICES.md](TROUBLESHOOTING_BEST_PRACTICES.md).
+For comprehensive troubleshooting guidance and best practices when using the Ralph technique, see [docs/TROUBLESHOOTING_BEST_PRACTICES.md](docs/TROUBLESHOOTING_BEST_PRACTICES.md).
 
 ## Troubleshooting
 
-For detailed troubleshooting information and best practices, see [TROUBLESHOOTING_BEST_PRACTICES.md](TROUBLESHOOTING_BEST_PRACTICES.md).
+For detailed troubleshooting information and best practices, see [docs/TROUBLESHOOTING_BEST_PRACTICES.md](docs/TROUBLESHOOTING_BEST_PRACTICES.md).
 
 ### Common Issues
 

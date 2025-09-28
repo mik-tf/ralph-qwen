@@ -38,11 +38,13 @@ qwen login
 git clone https://github.com/mik-tf/ralph-qwen.git
 cd ralph-qwen
 
-# Make scripts executable
-chmod +x ralph-*.sh
+# Use the enhanced workflow with Makefile
+make help
+make create-project
 
-# Initialize a new project
-./ralph-init.sh my-project
+# OR use scripts directly:
+chmod +x scripts/*.sh
+./scripts/ralph-init.sh my-project
 ```
 
 ### Option 2: Install via npm (when published)
@@ -105,6 +107,17 @@ TODO_BACKUP/
 
 ## Initial Setup for a New Project
 
+### Method 1: Enhanced Workflow (Recommended)
+
+1. Use the Makefile interface:
+   ```bash
+   cd /path/to/ralph-qwen
+   make create-project
+   ```
+   Follow the interactive prompts to create your project.
+
+### Method 2: Traditional Script Approach
+
 1. Create a project directory:
    ```bash
    mkdir my-ralph-project
@@ -114,7 +127,7 @@ TODO_BACKUP/
 
 2. Copy the Ralph scripts to your project:
    ```bash
-   cp /path/to/qwen-ralph/ralph-*.sh ./
+   cp /path/to/qwen-ralph/scripts/ralph-*.sh ./
    chmod +x ralph-*.sh
    ```
 

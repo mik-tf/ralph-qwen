@@ -17,10 +17,10 @@ This repository provides a complete implementation of the "Ralph" coding techniq
 - `TROUBLESHOOTING_BEST_PRACTICES.md`: Comprehensive troubleshooting and best practices
 
 ### 3. Scripts
-- `ralph-loop.sh`: Basic Ralph loop implementation with proper tool configuration
-- `ralph-loop-advanced.sh`: Advanced loop with monitoring features and proper tool configuration
-- `ralph-init.sh`: Project initialization script
-- `test-setup.sh`: Script to verify proper tool configuration
+- `scripts/ralph-loop.sh`: Basic Ralph loop implementation with proper tool configuration
+- `scripts/ralph-loop-advanced.sh`: Advanced loop with monitoring features and proper tool configuration
+- `scripts/ralph-init.sh`: Project initialization script
+- `scripts/test-setup.sh`: Script to verify proper tool configuration
 
 ### 4. Examples Directory
 - `examples/README.md`: Overview of examples
@@ -31,9 +31,9 @@ This repository provides a complete implementation of the "Ralph" coding techniq
 
 1. Install Qwen CLI: `npm install -g @qwen-code/qwen-code@latest`
 2. Clone this repository
-3. Use `ralph-init.sh project-name` to initialize a new project
+3. Use `make create-project` for the enhanced workflow, or `scripts/ralph-init.sh project-name` to initialize a new project
 4. Customize `prompt.md` with your specific instructions
-5. Run `ralph-loop.sh` to start the infinite loop
+5. Run `make run-project PROJECT_NAME=name` or `scripts/ralph-loop.sh` to start the infinite loop
 
 ## Key Concepts
 
