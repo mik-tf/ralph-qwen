@@ -264,4 +264,4 @@ We welcome contributions to the Qwen-Ralph project! Feel free to submit issues, 
 
 ## License
 
-Apache License 2.0, Copyright 2025 ThreeFold - see the [license](LICENSE) file for details.
+Apache License 2.0, Copyright 2025 ThreeFold - see the [license](LICENSE) for details.
