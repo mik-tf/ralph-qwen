@@ -179,16 +179,29 @@ For detailed information about how Qwen works with the Ralph technique, configur
 
 For a comprehensive collection of prompt templates for different use cases (React to Vue, Python to TypeScript, API implementation, etc.), see [PROMPT_TEMPLATES.md](PROMPT_TEMPLATES.md).
 
-## Scripts and Automation
+## Repository Structure
 
-The repository includes several scripts to automate the Ralph technique:
+The repository follows industry-standard organization:
 
-- `ralph-loop.sh`: Basic infinite loop script with proper tool configuration
-- `ralph-loop-advanced.sh`: Advanced loop with monitoring and control features
-- `ralph-init.sh`: Project initialization script
-- `test-setup.sh`: Script to verify proper tool configuration
-
-For detailed documentation about these scripts and how to use them, see the scripts themselves or [INSTALLATION.md](INSTALLATION.md).
+```
+ralph-qwen/
+├── Makefile              # Build and automation targets
+├── scripts/              # Automation scripts
+│   ├── create-project.sh # Interactive project creator
+│   ├── run-project.sh    # Start Ralph loop
+│   ├── stop-project.sh   # Stop Ralph loop
+│   ├── monitor-project.sh # Monitor progress
+│   ├── ralph-init.sh     # Legacy project initializer
+│   ├── ralph-loop.sh     # Basic Ralph loop
+│   ├── ralph-loop-advanced.sh # Advanced Ralph loop
+│   └── test-setup.sh     # Tool configuration test
+├── docs/                 # Documentation files
+│   ├── INSTALLATION.md
+│   ├── PROMPT_TEMPLATES.md
+│   └── ...
+├── examples/             # Example projects
+├── templates/            # Project templates
+└── .gitignore            # Git ignore rules
 
 ## File System Tool Configuration
 
