@@ -1,0 +1,31 @@
+{
+  "name": "@threefold/qwen-ralph",
+  "version": "1.0.0",
+  "description": "Implementation of the Ralph coding technique using Qwen",
+  "main": "index.js",
+  "scripts": {
+    "init": "bash ralph-init.sh",
+    "run": "bash ralph-loop.sh",
+    "run-advanced": "bash ralph-loop-advanced.sh"
+  },
+  "bin": {
+    "qwen-ralph": "./ralph-init.sh"
+  },
+  "keywords": [
+    "qwen",
+    "ai",
+    "automation",
+    "coding",
+    "programming",
+    "ralph",
+    "continuous-integration"
+  ],
+  "author": "ThreeFold",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/threefold/qwen-ralph.git"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
