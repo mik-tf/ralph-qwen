@@ -133,7 +133,7 @@ TODO_BACKUP/
 
 3. Initialize the project:
    ```bash
-   ./ralph-init.sh .
+   ./scripts/ralph-init.sh .
    ```
 
 4. Customize your `prompt.md` file with specific instructions
@@ -157,7 +157,7 @@ RUN apk add --no-cache git
 RUN npm install -g @qwen-code/qwen-code@latest
 
 # Copy Ralph scripts
-COPY ralph-*.sh /usr/local/bin/
+COPY scripts/ralph-*.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/ralph-*.sh
 
 WORKDIR /app

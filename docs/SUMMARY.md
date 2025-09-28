@@ -10,11 +10,11 @@ This repository provides a complete implementation of the "Ralph" coding techniq
 - `LICENSE`: Apache 2.0 license (Copyright 2025 ThreeFold)
 
 ### 2. Technical Documentation
-- `QWEN_IMPLEMENTATION.md`: Qwen-specific implementation details
-- `INSTALLATION.md`: Complete installation guide
-- `PROMPT_TEMPLATES.md`: Sample prompts for different use cases
-- `EXAMPLE_PROMPTS.md`: Example prompts with specific use cases
-- `TROUBLESHOOTING_BEST_PRACTICES.md`: Comprehensive troubleshooting and best practices
+- `docs/QWEN_IMPLEMENTATION.md`: Qwen-specific implementation details
+- `docs/INSTALLATION.md`: Complete installation guide
+- `docs/PROMPT_TEMPLATES.md`: Sample prompts for different use cases
+- `docs/EXAMPLE_PROMPTS.md`: Example prompts with specific use cases
+- `docs/TROUBLESHOOTING_BEST_PRACTICES.md`: Comprehensive troubleshooting and best practices
 
 ### 3. Scripts
 - `scripts/ralph-loop.sh`: Basic Ralph loop implementation with proper tool configuration

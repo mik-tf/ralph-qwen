@@ -46,11 +46,11 @@ If you encounter "Tool not found" errors:
 The Ralph loop scripts in this repository are already configured correctly. Simply run:
 
 ```bash
-./ralph-loop.sh
+./scripts/ralph-loop.sh
 ```
 
 Or for advanced features:
 
 ```bash
-./ralph-loop-advanced.sh
+./scripts/ralph-loop-advanced.sh
 ```
