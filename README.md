@@ -1,20 +1,34 @@
 # Qwen-Ralph: The Ralph Coding Technique with Qwen
 
 ## Table of Contents
-- [Introduction](#introduction)
-- [What is the Ralph Technique?](#what-is-the-ralph-technique)
-- [Why Qwen?](#why-qwen)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Use Cases](#use-cases)
-- [Advanced Usage](#advanced-usage)
-- [Qwen-Specific Implementation](#qwen-specific-implementation)
-- [Prompt Templates](#prompt-templates)
-- [Scripts and Automation](#scripts-and-automation)
-- [Examples](#examples)
-- [Troubleshooting and Best Practices](#troubleshooting-and-best-practices)
-- [Contributing](#contributing)
-- [License](#license)
+- [Qwen-Ralph: The Ralph Coding Technique with Qwen](#qwen-ralph-the-ralph-coding-technique-with-qwen)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [What is the Ralph Technique?](#what-is-the-ralph-technique)
+  - [Why Qwen?](#why-qwen)
+  - [Installation](#installation)
+    - [Prerequisites](#prerequisites)
+    - [Install Qwen CLI](#install-qwen-cli)
+    - [Install Qwen-Ralph](#install-qwen-ralph)
+  - [Quick Start](#quick-start)
+  - [Use Cases](#use-cases)
+    - [Codebase Porting](#codebase-porting)
+    - [Repository Maintenance](#repository-maintenance)
+    - [Feature Implementation](#feature-implementation)
+    - [Bug Fixes](#bug-fixes)
+  - [Advanced Usage](#advanced-usage)
+    - [Custom Configuration](#custom-configuration)
+    - [Monitoring and Control](#monitoring-and-control)
+  - [Qwen-Specific Implementation](#qwen-specific-implementation)
+  - [Prompt Templates](#prompt-templates)
+  - [Scripts and Automation](#scripts-and-automation)
+  - [Examples](#examples)
+  - [Troubleshooting and Best Practices](#troubleshooting-and-best-practices)
+  - [Troubleshooting](#troubleshooting)
+    - [Common Issues](#common-issues)
+    - [Monitoring Progress](#monitoring-progress)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Introduction
 
@@ -68,10 +82,9 @@ qwen login
 
 ### Install Qwen-Ralph
 
-#### Option 1: Use Scripts Directly
 ```bash
 # Clone the repository
-git clone https://github.com/threefold/qwen-ralph.git
+git clone https://github.com/mik-tf/qwen-ralph.git
 cd qwen-ralph
 
 # Make scripts executable
@@ -79,11 +92,6 @@ chmod +x ralph-*.sh
 
 # Initialize a new project
 ./ralph-init.sh my-project
-```
-
-#### Option 2: Install via npm (when published)
-```bash
-npm install -g @threefold/qwen-ralph
 ```
 
 ## Quick Start
