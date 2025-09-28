@@ -35,8 +35,8 @@ qwen login
 
 ```bash
 # Clone the repository
-git clone https://github.com/threefold/qwen-ralph.git
-cd qwen-ralph
+git clone https://github.com/mik-tf/ralph-qwen.git
+cd ralph-qwen
 
 # Make scripts executable
 chmod +x ralph-*.sh
@@ -48,7 +48,7 @@ chmod +x ralph-*.sh
 ### Option 2: Install via npm (when published)
 
 ```bash
-npm install -g @threefold/qwen-ralph
+npm install -g @mik-tf/ralph-qwen
 ```
 
 ## Setting up Your Environment

@@ -1,5 +1,5 @@
 {
-  "name": "@threefold/qwen-ralph",
+  "name": "@mik-tf/ralph-qwen",
   "version": "1.0.0",
   "description": "Implementation of the Ralph coding technique using Qwen",
   "main": "index.js",
