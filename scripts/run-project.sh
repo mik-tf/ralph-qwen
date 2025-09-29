@@ -20,10 +20,13 @@ fi
 echo "🚀 Starting Ralph loop for project: $PROJECT_NAME"
 echo "=============================================="
 
+# Change to the project directory
+cd "../$PROJECT_NAME"
+
 # Start the Ralph loop in background from the ralph-qwen directory
-nohup ./ralph-loop.sh > "../$PROJECT_NAME/ralph-output.log" 2> "../$PROJECT_NAME/ralph-errors.log" &
+nohup ../ralph-qwen/scripts/ralph-loop.sh > ralph-output.log 2> ralph-errors.log &
 RALPH_PID=$!
 
 echo "✅ Ralph loop started with PID: $RALPH_PID"
-echo "📝 Logs are being written to ../$PROJECT_NAME/ralph-output.log and ../$PROJECT_NAME/ralph-errors.log"
+echo "📝 Logs are being written to ralph-output.log and ralph-errors.log"
 echo "🛑 To stop the loop, run: make stop-project PROJECT_NAME=$PROJECT_NAME"
