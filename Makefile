@@ -42,19 +42,19 @@ list-projects:
 .PHONY: run-project
 run-project:
 	@echo "Starting Ralph loop..."
-	@$(BIN_DIR)/run-project.sh
+	@$(SCRIPTS_DIR)/run-project.sh
 
 # Monitor project progress
 .PHONY: monitor-project
 monitor-project:
 	@echo "Monitoring project progress..."
-	@$(BIN_DIR)/monitor-project.sh
+	@$(SCRIPTS_DIR)/monitor-project.sh
 
 # Stop running Ralph loop
 .PHONY: stop-project
 stop-project:
 	@echo "Stopping Ralph loop..."
-	@$(BIN_DIR)/stop-project.sh
+	@$(SCRIPTS_DIR)/stop-project.sh
 
 # Test setup
 .PHONY: test-setup
@@ -74,7 +74,7 @@ clean:
 .PHONY: docs
 docs:
 	@echo "Generating documentation..."
-	@$(BIN_DIR)/generate-docs.sh
+	@$(SCRIPTS_DIR)/generate-docs.sh
 
 # Install dependencies (if needed)
 .PHONY: install

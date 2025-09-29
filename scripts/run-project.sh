@@ -23,7 +23,7 @@ echo "=============================================="
 cd "../$PROJECT_NAME"
 
 # Start the Ralph loop in background
-nohup ../ralph-qwen/scripts/ralph-loop.sh > ralph-output.log 2> ralph-errors.log &
+nohup ./ralph-loop.sh > ralph-output.log 2> ralph-errors.log &
 RALPH_PID=$!
 
 echo "✅ Ralph loop started with PID: $RALPH_PID"
