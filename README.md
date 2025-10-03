@@ -135,36 +135,49 @@ make create-project
    ```bash
    # Use the Makefile for easy automation
    make help
+   
+   # Create a project (will prompt for details)
    make create-project
-   # Follow the interactive prompts to create your project
+   
+   # OR skip the project name prompt
+   make create-project PROJECT_NAME=my-awesome-project
+   
+   # Interactive prompts will ask:
+   # - Time duration (30m, 1h, 2h30m, indefinite)
+   # - Prompt type (Custom or Generic template)
+   # - Template selection (if Generic)
    
    # Start the Ralph loop for your project
    make run-project PROJECT_NAME=my-awesome-project
    ```
 
-2. **Traditional Approach**:
-   ```bash
-   # Create a project directory
-   mkdir my-universal-project
-   cd my-universal-project
+2. **Enhanced Workflow Features**:
+   - **Time Constraints**: Set how long Ralph should run (30m, 1h, indefinite, etc.)
+   - **Custom Prompts**: Paste your own multi-line prompt
+   - **Generic Templates**: Choose from 6 pre-built templates:
+     1. Codebase Porting (e.g., React to Vue)
+     2. Translation Services
+     3. Editing & Proofreading
+     4. Copywriting
+     5. Website Creation
+     6. Other/General Purpose
    
-   # Initialize your source and target repositories (if needed)
-   # For porting, create your source repository first
-   # Then create the target directory
-   mkdir target-repo
-   ```
-
-3. **Create your prompt file** (`prompt.md`):
+3. **Default Prompt Structure**:
+   All projects include a default prefix with your specific requirements:
    ```markdown
    Your job is to work on this codebase and maintain the repository.
-
-   Current status: Starting the project
-
+   
    Make a commit and push your changes after every single file edit.
-
-   Use the .agent/ directory as a scratchpad for your work. Store long term plans and todo lists there.
-
+   
+   Use the .agent/ directory as a scratchpad for your work.
+   
    Follow existing code patterns and conventions.
+   
+   CURRENT STATUS: Starting the project
+   
+   The specific project requirements:
+   
+   [Your custom prompt or selected template]
    ```
 
 4. **Run the Ralph loop**:

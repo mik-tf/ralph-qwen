@@ -13,21 +13,22 @@ help:
 	@echo "Ralph-Qwen Enhanced Workflow"
 	@echo "============================="
 	@echo "Available targets:"
-	@echo "  create-project     - Create a new Ralph project with interactive setup"
-	@echo "  list-projects      - List all Ralph projects in workspace"
-	@echo "  run-project        - Start Ralph loop for a project"
-	@echo "  monitor-project    - Monitor project progress"
-	@echo "  stop-project       - Stop running Ralph loop"
-	@echo "  test-setup         - Test Ralph-Qwen tool configuration"
-	@echo "  clean              - Clean temporary files"
-	@echo "  docs               - Generate documentation"
-	@echo "  help               - Show this help message"
+	@echo "  create-project                   - Create a new Ralph project with interactive setup"
+	@echo "  create-project PROJECT_NAME=name - Create project with specified name (skip name prompt)"
+	@echo "  list-projects                    - List all Ralph projects in workspace"
+	@echo "  run-project                      - Start Ralph loop for a project"
+	@echo "  monitor-project                  - Monitor project progress"
+	@echo "  stop-project                     - Stop running Ralph loop"
+	@echo "  test-setup                       - Test Ralph-Qwen tool configuration"
+	@echo "  clean                            - Clean temporary files"
+	@echo "  docs                             - Generate documentation"
+	@echo "  help                             - Show this help message"
 
 # Create a new project with interactive Qwen setup
 .PHONY: create-project
 create-project:
 	@echo "Creating new Ralph project..."
-	$(SCRIPTS_DIR)/create-project.sh
+	$(SCRIPTS_DIR)/create-project.sh $(PROJECT_NAME)
 
 # List all projects in the workspace
 .PHONY: list-projects
