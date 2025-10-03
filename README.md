@@ -94,17 +94,21 @@ The technique was popularized by Geoff Huntley and used at a YC hackathon where 
 The framework provides universal automation capabilities:
 
 ```bash
-# Create ANY type of project
+# Create ANY type of project (with optional PROJECT_NAME parameter)
 make create-project
-# → Choose from multiple templates or create custom
+make create-project PROJECT_NAME=my-project
+# → Interactive setup with time constraints, custom/generic prompts
+# → Optional auto-start feature
 
 # Run continuous automation
 make run-project PROJECT_NAME=my-awesome-project
 # → Infinite loop automation for any task
+# → Respects time constraints set during creation
 
 # Monitor progress
 make monitor-project PROJECT_NAME=my-awesome-project
 # → Real-time progress tracking
+# → Check time logs and TODO updates
 
 # Stop when done
 make stop-project PROJECT_NAME=my-awesome-project
@@ -125,71 +129,127 @@ cd ralph-qwen
 # See available commands
 make help
 
-# Create your first project
+# Create your first project (fully interactive)
 make create-project
+
+# Or skip the project name prompt
+make create-project PROJECT_NAME=my-first-project
 ```
 
 ## Quick Start
 
-1. **Enhanced Workflow** (Recommended):
-   ```bash
-   # Use the Makefile for easy automation
-   make help
-   
-   # Create a project (will prompt for details)
-   make create-project
-   
-   # OR skip the project name prompt
-   make create-project PROJECT_NAME=my-awesome-project
-   
-   # Interactive prompts will ask:
-   # - Time duration (30m, 1h, 2h30m, indefinite)
-   # - Prompt type (Custom or Generic template)
-   # - Template selection (if Generic)
-   
-   # Start the Ralph loop for your project
-   make run-project PROJECT_NAME=my-awesome-project
-   ```
+### 🚀 One-Command Project Setup (Recommended)
 
-2. **Enhanced Workflow Features**:
-   - **Time Constraints**: Set how long Ralph should run (30m, 1h, indefinite, etc.)
-   - **Custom Prompts**: Paste your own multi-line prompt
-   - **Generic Templates**: Choose from 6 pre-built templates:
-     1. Codebase Porting (e.g., React to Vue)
-     2. Translation Services
-     3. Editing & Proofreading
-     4. Copywriting
-     5. Website Creation
-     6. Other/General Purpose
-   
-3. **Default Prompt Structure**:
-   All projects include a default prefix with your specific requirements:
-   ```markdown
-   Your job is to work on this codebase and maintain the repository.
-   
-   Make a commit and push your changes after every single file edit.
-   
-   Use the .agent/ directory as a scratchpad for your work.
-   
-   Follow existing code patterns and conventions.
-   
-   CURRENT STATUS: Starting the project
-   
-   The specific project requirements:
-   
-   [Your custom prompt or selected template]
-   ```
+```bash
+# Full interactive mode
+make create-project
 
-4. **Run the Ralph loop**:
-   ```bash
-   # Use the enhanced workflow (recommended)
-   make create-project
-   # Follow the interactive prompts
-   
-   # OR use the traditional approach:
-   # From the ralph-qwen directory
-   ./scripts/ralph-loop.sh
-   ```
+# Skip project name prompt
+make create-project PROJECT_NAME=my-awesome-project
+```
+
+**The enhanced workflow will guide you through:**
+
+1. **📛 Project Name** (skipped if `PROJECT_NAME=` provided)
+   - Enter a unique project name
+   - Validates that project doesn't already exist
+
+2. **⏱️ Time Duration** (with validation)
+   - `30m` → 30 minutes
+   - `1h` → 1 hour
+   - `2h30m` → 2 hours 30 minutes
+   - `indefinite` → No time limit
+   - Invalid formats will prompt again with error message
+
+3. **📝 Prompt Type**
+   - **Custom**: Paste your own multi-line prompt (Ctrl+D to finish)
+   - **Generic**: Choose from 6 pre-built templates
+
+4. **🎯 Template Selection** (if Generic chosen)
+   1. Codebase Porting (e.g., React to Vue)
+   2. Translation Services
+   3. Editing & Proofreading
+   4. Copywriting
+   5. Website Creation
+   6. Other/General Purpose
+
+5. **🚀 Auto-Start Option**
+   - Optionally start Ralph Qwen immediately after setup
+   - Type `y` to start now, `N` to start later
+
+### 📋 Default Prompt Structure
+
+All projects include a consistent default prefix:
+
+```markdown
+Your job is to work on this codebase and maintain the repository.
+
+Make a commit and push your changes after every single file edit.
+
+Use the .agent/ directory as a scratchpad for your work.
+
+Follow existing code patterns and conventions.
+
+CURRENT STATUS: Starting the project
+
+The specific project requirements:
+
+[Time constraint if not indefinite]
+
+[Your custom prompt or selected template]
+```
+
+### ▶️ Starting Ralph Qwen
+
+```bash
+# If you chose to start later, run:
+make run-project PROJECT_NAME=my-awesome-project
+
+# Monitor progress:
+make monitor-project PROJECT_NAME=my-awesome-project
+
+# Stop when done:
+make stop-project PROJECT_NAME=my-awesome-project
+```
+
+### 📊 Example Session
+
+```bash
+$ make create-project
+
+🚀 Ralph-Qwen Project Creator
+==============================
+
+Enter project name: my-website
+
+⏱️  How long should Ralph Qwen run?
+Examples: 30m, 1h, 2h30m, indefinite
+
+Enter duration: 30m
+
+📝 Choose prompt type:
+1) Custom prompt (paste your own)
+2) Generic template (select from options)
+
+Select (1-2) [2]: 1
+
+📋 Enter your custom prompt (press Ctrl+D when done):
+Create a beautiful landing page for a math education website
+^D
+
+✅ Custom prompt configured
+✅ Project 'my-website' created successfully!
+
+Configuration:
+  - Time constraint: in 30 minute(s) of time
+  - Prompt: Custom
+
+🚀 Do you want to start Ralph Qwen now for the project 'my-website'?
+Start now? (y/N): y
+
+Starting Ralph Qwen for project 'my-website'...
+✅ Ralph loop started with PID: 12345
+```
 
 ## Use Cases
 
