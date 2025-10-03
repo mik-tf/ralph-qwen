@@ -20,11 +20,11 @@ fi
 echo "🚀 Starting Ralph loop for project: $PROJECT_NAME"
 echo "=============================================="
 
-# Change to the project directory
-cd "../$PROJECT_NAME"
+# Get the absolute path to the project directory
+PROJECT_PATH="$(cd "../$PROJECT_NAME" && pwd)"
 
-# Start the Ralph loop in background from the ralph-qwen directory
-nohup ../ralph-qwen/scripts/ralph-loop.sh > ralph-output.log 2> ralph-errors.log &
+# Start the Ralph loop in background, passing the project directory
+nohup bash "$(dirname "$0")/ralph-loop.sh" "$PROJECT_PATH" > "$PROJECT_PATH/ralph-output.log" 2> "$PROJECT_PATH/ralph-errors.log" &
 RALPH_PID=$!
 
 echo "✅ Ralph loop started with PID: $RALPH_PID"
